@@ -67,7 +67,7 @@ def download_history(channel_info, history, path):
         'channel': channel_info,
         'messages': existing_messages,
     }
-    json_str = json.dumps(data, indent=2, sort_keys=True)
+    json_str = json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True)
     with open(path, 'w') as outfile:
         outfile.write(json_str)
 
@@ -92,7 +92,7 @@ def download_usernames(slack, path):
         usernames = {}
 
     usernames.update(slack.usernames)
-    json_str = json.dumps(usernames, indent=2, sort_keys=True)
+    json_str = json.dumps(usernames, ensure_ascii=False, indent=2, sort_keys=True)
     with open(path, 'w') as outfile:
         outfile.write(json_str)
 
